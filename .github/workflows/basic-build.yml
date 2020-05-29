@@ -188,4 +188,5 @@ jobs:
         source scripts/source.sh
         echo ${PYTHONPATH}
         cd tests
+        export LD_PRELOAD=libmpi.so
         ./run "mpirun -n 2 python"
