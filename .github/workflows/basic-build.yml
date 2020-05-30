@@ -189,4 +189,4 @@ jobs:
         echo ${PYTHONPATH}
         cd tests
         export LD_PRELOAD=libmpi.so
-        ./run "mpirun -n 2 --mca btl ^openib python"
+        ./run "mpirun -n 2 --mca btl self,sm python"
