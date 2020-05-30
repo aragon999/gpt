@@ -189,4 +189,4 @@ jobs:
         echo ${PYTHONPATH}
         cd tests
         export LD_PRELOAD=libmpi.so
-        ./run "mpirun --verbose -n 2 --mca btl self,sm --mca pml ob1 python"
+        ./run "mpirun --verbose -np 1 --mca btl self,sm --mca pml ob1 python"
