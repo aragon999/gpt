@@ -18,7 +18,7 @@ jobs:
 
       - name: Install linters
         id: install-linters
-        run: pip install flake8 cpplint
+        run: pip install flake8 cpplint black
 
       # - name: Run cpplint
       #   if: always()
