@@ -28,8 +28,9 @@ jobs:
       - name: Run black
         if: always()
         run: |
-          black --check -q lib/gpt
-          if [ $? -ne 0 ]; then
+          black --check -q lib/gpt || exit_code=$?
+
+          if [ ${exit_code} -ne 0 ]; then
               black --diff -q lib/gpt
           fi
 
@@ -39,4 +40,6 @@ jobs:
           flake8 \
             --format="##[error]%(path)s:%(row)s:%(col)s:%(code)s:%(text)s" \
             --ignore="E203,E401,E501,W503,F401,F403,F405,E741,E302" \
-            --max-line-length=100 ./lib/gpt
+            --max-line-length=100 ./lib/gpt > tmp_flake.log || true
+
+          cat tmp_flake.log
