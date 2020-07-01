@@ -27,9 +27,11 @@ jobs:
 
       - name: Run black
         if: always()
-        uses: RojerGS/python-black-check@master
-        with:
-          line-length: '100'
+        run: |
+          black --check -q lib/gpt
+          if [ $? -ne 0 ]; then
+              black --diff -q lib/gpt
+          fi
 
       - name: Run flake8
         if: always()
