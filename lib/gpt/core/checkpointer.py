@@ -25,10 +25,8 @@ import numpy
 class checkpointer_none:
     def __init__(self):
         self.grid = None
-
     def save(self, obj):
         pass
-
     def load(self, obj):
         return False
 

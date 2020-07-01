@@ -58,7 +58,7 @@ class params_convention:
         # Allow for positional default arguments
         for i in reversed(range(nargs)):
             if fparams[i].default is inspect.Parameter.empty:
-                nargs_min = i + 1
+                nargs_min = i +1
                 break
 
         # Wrapper

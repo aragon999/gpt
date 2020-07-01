@@ -29,11 +29,10 @@ class coarse_deflate:
         self.cevec = cevec
         self.fev = fev
         self.basis = basis
-        self.csrc = g.lattice(cevec[0])
+        self.csrc = g.lattice(cevec[0 ])
         self.cdst = g.lattice(cevec[0])
 
     def __call__(self, matrix):
-
         otype, grid, cb = None, None, None
         if type(matrix) == g.matrix_operator:
             otype, grid, cb = matrix.otype, matrix.grid, matrix.cb
@@ -67,5 +66,4 @@ class coarse_deflate:
                     % (t3 - t0, t1 - t0, t2 - t1, t3 - t2)
                 )
             return self.inverter(matrix)(dst, src)
-
         return g.matrix_operator(mat=inv, inv_mat=matrix, otype=otype, grid=grid, cb=cb)
