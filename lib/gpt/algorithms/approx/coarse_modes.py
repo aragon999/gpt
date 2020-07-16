@@ -28,7 +28,7 @@ class coarse_modes:
         self.right = right
         self.evals = evals
         self.f = f
-        assert len(left) == len(right) and len(left) == len(evals) and len(left) > 0
+        assert len(left) == len(right)and len(left)== len(evals) and len(left)> 0
 
     def __call__(self, matrix=None):
 
