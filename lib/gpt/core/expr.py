@@ -53,7 +53,7 @@ class expr:
         elif gpt.util.isnum(val):
             self.val = [(complex(val), [])]
         else:
-            raise Exception("Unknown type " + str(type(val)))
+            raise TypeError(f"Unknown type {type(val)}")  # pragma: no cover
         self.unary = unary
 
     def is_single(self, t=None):
@@ -201,7 +201,7 @@ def apply_type_right_to_left(e, t):
                 ]
 
         return e
-    assert 0
+    raise TypeError(f"Do not know how to handle {type(e)}")  # pragma: no cover
 
 
 def get_otype_from_multiplication(t_otype, t_adj, f_otype, f_adj):

@@ -63,7 +63,7 @@ def create_links(first, init, params):
         return first
 
     else:
-        assert 0
+        raise TypeError(f'Type {type(first)} of first argument is not supported')  # pragma: no cover
 
 
 @params_convention(scale=1.0)

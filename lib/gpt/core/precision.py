@@ -25,7 +25,7 @@ class single:
     complex_dtype = numpy.complex64
 
     def __init__(self):
-        pass
+        pass  # pragma: no cover
 
 
 class double:
@@ -34,7 +34,7 @@ class double:
     complex_dtype = numpy.complex128
 
     def __init__(self):
-        pass
+        pass  # pragma: no cover
 
 
 def str_to_precision(s):
@@ -43,4 +43,4 @@ def str_to_precision(s):
     elif s == "double":
         return double
     else:
-        assert 0
+        raise ValueError(f"Unkown precision: {s}")  # pragma: no cover

@@ -55,7 +55,7 @@ def copy(first, second=None):
         return t
 
     else:
-        assert 0
+        raise TypeError(f'Type {type(first)} of first argument is not supported')  # pragma: no cover
 
 
 def convert(first, second):
@@ -85,7 +85,7 @@ def convert(first, second):
         return first
 
     else:
-        assert 0
+        raise TypeError(f'Do not know how to handle {type(first)}, {type(second)} as arguments')  # pragma: no cover
 
 
 def innerProduct(a, b, rank_only=False):

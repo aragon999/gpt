@@ -50,7 +50,7 @@ def coordinates(o, order="lexicographic"):
             o.top, o.bottom, o.checker_dim_mask, o.cb, order
         )
     else:
-        assert 0
+        raise TypeError(f"Do not know how to handle {type(e)}")  # pragma: no cover
 
 
 def apply_exp_ixp(dst, src, p):
