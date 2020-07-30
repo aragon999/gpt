@@ -9,9 +9,9 @@ import gpt
 import numpy
 
 # workdir
-if "WORK_DIR" in os.environ:
+if "WORK_DIR" in os.environ:  # pragma: no cover
     work_dir = os.environ["WORK_DIR"]
-else:
+else:  # pragma: no cover
     work_dir = "."
 
 # request test files
