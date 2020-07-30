@@ -163,3 +163,6 @@ dst2 = g(prop_transformed * src)
 eps2 = g.norm2(dst1 - dst2) / g.norm2(dst1)
 g.message(f"Gauge transformation check {eps2}")
 assert eps2 < 1e-12
+
+# Test deletion of operator
+del w
