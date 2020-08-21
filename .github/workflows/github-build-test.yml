@@ -228,6 +228,8 @@ jobs:
     - name: Install Grid
       run: |
         sudo dpkg -i grid-${{ runner.os }}-${{ matrix.compiler }}-${{ matrix.mpi }}.deb
+        grid-config --summary
+        echo "Grid CXX: $(grid-config --cxx)"
 
     - name: Clone gpt
       uses: actions/checkout@v2
