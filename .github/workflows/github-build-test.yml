@@ -40,6 +40,15 @@ jobs:
       run: |
         sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
 
+    - name: Set compiler alternatives to gcc-10
+      if: matrix.compiler == 'gcc'
+      run: |
+        sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-10 1
+        sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-10 1
+
+        sudo update-alternatives --set cc /usr/bin/gcc-10
+        sudo update-alternatives --set c++ /usr/bin/g++-10
+
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
       run: |
@@ -180,6 +189,15 @@ jobs:
     - name: Install Ubuntu packages
       run: |
         sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
+
+    - name: Set compiler alternatives to gcc-10
+      if: matrix.compiler == 'gcc'
+      run: |
+        sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-10 1
+        sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-10 1
+
+        sudo update-alternatives --set cc /usr/bin/gcc-10
+        sudo update-alternatives --set c++ /usr/bin/g++-10
 
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
@@ -363,6 +381,15 @@ jobs:
     - name: Install Ubuntu packages
       run: |
         sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
+
+    - name: Set compiler alternatives to gcc-10
+      if: matrix.compiler == 'gcc'
+      run: |
+        sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-10 1
+        sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-10 1
+
+        sudo update-alternatives --set cc /usr/bin/gcc-10
+        sudo update-alternatives --set c++ /usr/bin/g++-10
 
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
