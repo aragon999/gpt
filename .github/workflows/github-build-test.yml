@@ -7,6 +7,7 @@ on:
 env:
   MAKE_BUILD_FLAGS: -j2
   GRID_REPOSITORY_REF: feature/gpt
+  UBUNTU_MAKE_PACKAGES: "clang-9 g++-10 libmpfr-dev libgmp-dev libssl-dev zlib1g-dev libmpich-dev libopenmpi-dev libfftw3-dev"
   CC: mpicc
   CXX: mpic++
   OMPI_CC: cc
@@ -37,7 +38,7 @@ jobs:
 
     - name: Install Ubuntu packages
       run: |
-        sudo apt-get install -y clang-9 gcc-10 libmpfr-dev libgmp-dev libssl-dev zlib1g-dev libmpich-dev libopenmpi-dev libfftw3-dev
+        sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
 
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
@@ -178,7 +179,7 @@ jobs:
 
     - name: Install Ubuntu packages
       run: |
-        sudo apt-get install -y clang-9 gcc-10 libmpfr-dev libgmp-dev libssl-dev zlib1g-dev libmpich-dev libopenmpi-dev libfftw3-dev
+        sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
 
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
@@ -361,7 +362,7 @@ jobs:
 
     - name: Install Ubuntu packages
       run: |
-        sudo apt-get install -y clang-9 gcc-10 libmpfr-dev libgmp-dev libssl-dev zlib1g-dev libmpich-dev libopenmpi-dev libfftw3-dev
+        sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
 
     - name: Set compiler alternatives to clang-9
       if: matrix.compiler == 'clang'
@@ -459,7 +460,7 @@ jobs:
     steps:
     - name: Install Ubuntu packages
       run: |
-        sudo apt-get install -y clang-9 gcc-10 libmpfr-dev libgmp-dev libssl-dev zlib1g-dev libmpich-dev libopenmpi-dev
+        sudo apt-get install -y ${{ env.UBUNTU_MAKE_PACKAGES }}
 
     - name: Setup python
       uses: actions/setup-python@v2
