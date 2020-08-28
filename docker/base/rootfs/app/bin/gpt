@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -eu
+
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+subscript_dir="${script_dir}/gpt-commands"
+
+sub_command=""
+if [ $# -ge 1 ]; then
+    sub_command="${1}"
+fi
+
+declare -A sub_commands
+
+command_files=$(find "${subscript_dir}" -executable -type f -exec basename {} \;)
+for command in ${command_files}; do
+    sub_commands[${command%.*}]=${command}
+done
+
+# Help is wanted for specific command
+if [ "${sub_command}" == "help" ] && [ $# -ge 2 ]; then
+    sub_command="${2}"
+    if [ ${sub_commands[${sub_command}]+_} ]; then
+        "${subscript_dir}/${sub_commands[${sub_command}]}" "${@:2}"
+
+        exit
+    else
+        echo "Command ${sub_command} not found"
+        exit 1
+    fi
+fi
+
+# Specific command was called?
+if [ "${sub_command}" != "" ]; then
+    if [ ${sub_commands[${sub_command}]+_} ]; then
+        "${subscript_dir}/${sub_commands[${sub_command}]}" "${@:2}"
+        exit
+    else
+        echo "Command ${sub_command} not found"
+        exit 1
+    fi
+fi
+
+# No Argument provided, print help and exit
+echo "Usage: <command> [option]"
+echo
+echo "For more information see"
+echo "  help <command>"
+echo
+echo "Available commands:"
+for command in "${!sub_commands[@]}"; do
+    echo "  ${command}"
+done
+echo

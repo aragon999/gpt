@@ -5,9 +5,8 @@ FROM ${BASE_IMAGE} AS build
 ARG COMPILER=gcc
 ARG MPI=none
 
-# FIXME: actually we currently do not need the libopenmpi3 dependencies, but
-#        the cgpt.so compiled with clang-9 is linking against libmpi{,_cxx}.so
-#        therefore for now we still need this dependency
+# TODO: Add libopenmpi3 openmpi-bin mpich libmpich12 if we enable mpi, maybe
+#       only for the images built with MPI (file size)
 RUN \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \

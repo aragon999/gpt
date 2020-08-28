@@ -10,3 +10,5 @@ RUN \
 
 ENV PATH="/app/bin:${PATH}"
 ENV TZ="Europe/Berlin"
+
+COPY rootfs/ /
