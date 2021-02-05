@@ -500,6 +500,15 @@ jobs:
         name: documentation
         path: gpt/documentation/build
 
+    - name: Deploy Github pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: gpt/documentation/build
+        CLEAN: true
+
+
   build-gpt-docker-base:
     needs: [build-grid, build-gpt, test-gpt]
     runs-on: ubuntu-20.04
